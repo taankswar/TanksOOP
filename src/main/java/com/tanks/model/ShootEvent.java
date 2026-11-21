@@ -1,4 +1,13 @@
 package com.tanks.model;
 
-public class ShootEvent {
-}
+/**
+ * Событие выстрела.
+ */
+public record ShootEvent(
+        String shooterId,
+        String targetId,
+        ArmorZone hitZone,
+        int damage,
+        boolean penetrated,
+        boolean destroyed
+) implements GameEvent {}

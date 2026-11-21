@@ -1,4 +1,6 @@
 package com.tanks.model;
 
-public class TankDestroyedEvent {
-}
+/**
+ * Событие уничтожения танка.
+ */
+public record TankDestroyedEvent(String tankId) implements GameEvent {}

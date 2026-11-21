@@ -49,14 +49,13 @@ public abstract class Tank {
      * @param hitZone зона, в которую попали
      * @return фактический нанесенный урон (0, если не пробил)
      */
-    public int receiveShot(int penetration, int damage, ArmorZone hitZone) {
+    public int receiveShot(int penetration, int damage, ArmorZone hitZone, double armorModifier) {
         if (isDestroyed()) {
             throw new IllegalStateException("Нельзя стрелять по уничтоженному танку");
         }
 
-        int armor = stats.getArmor(hitZone);
+        int armor = (int)(stats.getArmor(hitZone) * armorModifier); // Усиление брони
 
-        // ГЛАВНОЕ ПРАВИЛО: если броня >= пробитие, урон не проходит
         if (armor >= penetration) {
             return 0;
         }

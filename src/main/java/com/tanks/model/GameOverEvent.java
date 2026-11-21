@@ -1,4 +1,6 @@
 package com.tanks.model;
 
-public class GameOverEvent {
-}
+/**
+ * Событие окончания игры.
+ */
+public record GameOverEvent(String winnerId) implements GameEvent {}

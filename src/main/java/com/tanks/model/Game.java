@@ -215,11 +215,12 @@ public class Game {
         // Определяем зону попадания
         ArmorZone hitZone = calculateHitZone(shooter, target);
 
-        // Наносим урон
+        double armorModifier = getArmorModifier(target);
         int damage = target.receiveShot(
                 shooter.getStats().gunPenetration(),
                 shooter.getStats().gunDamage(),
-                hitZone
+                hitZone,
+                armorModifier
         );
 
         return new ShotResult(
@@ -261,5 +262,24 @@ public class Game {
                 return directionToTarget == Direction.UP ? ArmorZone.LEFT_SIDE : ArmorZone.RIGHT_SIDE;
             }
         }
+    }
+
+    /**
+     * Проверяет, стоит ли танк на укрытии.
+     * @param tank танк
+     * @return true, если танк на укрытии
+     */
+    public boolean isTankOnCover(Tank tank) {
+        Position pos = tank.getPosition();
+        return board.getCell(pos) == Board.COVER;
+    }
+
+    /**
+     * Возвращает модификатор брони для танка на укрытии.
+     * @param tank танк
+     * @return множитель брони (1.0 = обычный, 1.5 = на укрытии)
+     */
+    public double getArmorModifier(Tank tank) {
+        return isTankOnCover(tank) ? 1.5 : 1.0;
     }
 }

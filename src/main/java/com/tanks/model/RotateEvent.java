@@ -1,4 +1,6 @@
 package com.tanks.model;
 
-public class RotateEvent {
-}
+/**
+ * Событие поворота танка.
+ */
+public record RotateEvent(String tankId, Direction oldFacing, Direction newFacing) implements GameEvent {}

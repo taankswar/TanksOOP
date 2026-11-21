@@ -1,4 +1,6 @@
 package com.tanks.model;
 
-public class MoveAction {
-}
+/**
+ * Перемещение на указанное количество клеток.
+ */
+public record MoveAction(int cells) implements TurnAction {}

@@ -1,4 +1,6 @@
 package com.tanks.model;
 
-public class MoveEvent {
-}
+/**
+ * Событие перемещения танка.
+ */
+public record MoveEvent(String tankId, Position from, Position to) implements GameEvent {}

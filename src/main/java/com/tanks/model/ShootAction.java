@@ -1,4 +1,6 @@
 package com.tanks.model;
 
-public class ShootAction {
-}
+/**
+ * Выстрел.
+ */
+public record ShootAction() implements TurnAction {}

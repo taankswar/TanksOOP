@@ -1,4 +1,6 @@
 package com.tanks.model;
 
-public class PassAction {
-}
+/**
+ * Пропуск хода.
+ */
+public record PassAction() implements TurnAction {}

@@ -1,4 +1,6 @@
 package com.tanks.model;
 
-public class RotateAction {
-}
+/**
+ * Поворот в указанном направлении.
+ */
+public record RotateAction(Direction newDirection) implements TurnAction {}
