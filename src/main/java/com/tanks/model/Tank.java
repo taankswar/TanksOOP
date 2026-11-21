@@ -86,4 +86,33 @@ public abstract class Tank {
         }
         currentAmmo--;
     }
+
+    /**
+     * Проверяет, может ли танк пройти указанное количество клеток.
+     * @param cells количество клеток
+     * @return true, если танк может пройти
+     */
+    public boolean canMove(int cells) {
+        return !isDestroyed() && cells > 0 && cells <= getStats().mobility();
+    }
+
+    /**
+     * Проверяет, может ли танк повернуться в указанном направлении.
+     * @param newDirection новое направление
+     * @return true, если танк может повернуться
+     */
+    public boolean canRotate(Direction newDirection) {
+        return !isDestroyed() && newDirection != null;
+    }
+
+    /**
+     * Поворачивает танк в указанном направлении.
+     * @param newDirection новое направление
+     */
+    public void rotate(Direction newDirection) {
+        if (!canRotate(newDirection)) {
+            throw new IllegalStateException("Танк не может повернуться");
+        }
+        this.facing = newDirection;
+    }
 }
